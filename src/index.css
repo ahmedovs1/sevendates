@@ -1,0 +1,101 @@
+@import 'tailwindcss';
+@import './fonts.css';
+
+/* ---------- design tokens ---------- */
+@theme {
+  --color-brand: #075d1b;
+  --color-brand-dark: #0a4217;
+  --color-gold: #6e5617;
+  --color-sand: #e9d9a2;
+  --color-ink: #1a1a1a;
+  --color-muted: #5c6660;
+  --color-line: #e3e7e4;
+  --color-cream: #f6f4ee;
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --shadow-brand: 0 18px 40px rgba(7, 93, 27, 0.12);
+  --shadow-card: 0 10px 30px rgba(26, 26, 26, 0.07);
+}
+
+/* ---------- base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white font-body text-ink antialiased;
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-heading font-medium leading-tight;
+  }
+}
+
+/* ---------- shared component classes ---------- */
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1305px] px-5;
+  }
+
+  /* one shared button shape, then a variant per look */
+  .btn,
+  .btn-primary,
+  .btn-light,
+  .btn-outline,
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-7 py-3 text-[15px] font-semibold transition hover:-translate-y-px;
+  }
+  .btn-primary {
+    @apply bg-brand text-white hover:bg-brand-dark;
+  }
+  .btn-light {
+    @apply bg-white text-brand hover:bg-cream;
+  }
+  .btn-outline {
+    @apply border-[1.5px] border-brand text-brand hover:bg-brand hover:text-white;
+  }
+  .btn-ghost-light {
+    @apply border-[1.5px] border-white/70 text-white hover:bg-white hover:text-brand;
+  }
+
+  .section-title {
+    @apply text-center text-[clamp(28px,4vw,46px)] text-brand;
+  }
+  .section-subtitle {
+    @apply mx-auto mt-4 max-w-[860px] text-center text-[17px] text-muted;
+  }
+  .field {
+    @apply w-full rounded-xl border border-line px-4 py-3 outline-none focus:border-brand;
+  }
+}
+
+/* ---------- section backdrops (same art per breakpoint as the original) ---------- */
+@layer components {
+  .hero-bg {
+    background-image: url('/images/mobileBGimg.webp');
+    background-size: cover;
+    background-position: center;
+  }
+  @media (min-width: 768px) {
+    .hero-bg {
+      background-image: url('/images/planshetBg-scaled.webp');
+    }
+  }
+  @media (min-width: 1025px) {
+    .hero-bg {
+      background-image: url('/images/hero-1-scaled.webp');
+    }
+  }
+  .why-bg {
+    background-color: #6e5617;
+    background-image: url('/images/Untitled-design-2025-05-07T084009.092.png');
+    background-size: cover;
+    background-position: center;
+  }
+}
