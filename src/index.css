@@ -116,9 +116,24 @@
       var(--color-flag-red) 66.67% 100%
     );
   }
+  /* The `why` icon set is near-white line art on transparency — invisible on a
+     white card, and a filter cannot tint it without also tinting the artwork's
+     own light grey. Masking uses only the alpha channel, so the shape takes a
+     solid `currentColor` fill. Pass the file through the --icon variable. */
+  .icon-mask {
+    background-color: currentColor;
+    -webkit-mask-image: var(--icon);
+    mask-image: var(--icon);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
   /* uppercase eyebrow above section headings */
   .kicker {
-    @apply font-body text-[13px] font-bold uppercase tracking-[0.18em] text-accent;
+    @apply font-body text-[20px] font-bold uppercase tracking-[0.18em] text-accent;
   }
 }
 

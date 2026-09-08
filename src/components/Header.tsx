@@ -25,9 +25,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-60 border-b border-line bg-white/95 backdrop-blur">
       <div className="tricolore h-[3px]" />
-      <div className="container-page flex min-h-[92px] items-center gap-6">
+      <div className="container-page flex min-h-[120px] items-center gap-6">
         <Link to={path(routes.home)} className="shrink-0">
-          <img src={images.logo} alt="Seven Dates" className="h-11 w-auto" />
+          <img src={images.logo} alt="Seven Dates" className="h-20 w-auto" />
         </Link>
 
         <nav className="ml-auto hidden gap-6 text-[15px] font-medium lg:flex">

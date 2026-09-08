@@ -32,9 +32,12 @@ const dict: Dict = {
     sendWhatsapp: 'Send on WhatsApp',
   },
   hero: {
-    title: 'PREMIUM HALAL Natural drink based on dates.',
+    title: 'PREMIUM HALAL Natural drink from Italy',
     award: 'WINNER GOLD AWARD 2024, LONDON.',
     cta: 'Learn more',
+  },
+  awards: {
+    title: 'Our awards',
   },
   pure: {
     title: 'Pure composition',
@@ -70,7 +73,6 @@ const dict: Dict = {
       'Natural lemon juice',
       'Aluminum Can (Without BFA)',
       'Sparkling water',
-      'Allergen-free',
     ],
   },
   about: {
@@ -176,6 +178,7 @@ const dict: Dict = {
   countries: {
     uz: 'Uzbekistan',
     ru: 'Russia',
+    kz: 'Kazakhstan',
   },
 }
 

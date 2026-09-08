@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import { images, routes } from '../data/site'
@@ -37,6 +37,29 @@ export default function Home() {
       </section>
 
      
+      {/* awards — the badges behind the hero's "WINNER GOLD AWARD" line */}
+      <section className="bg-cream py-14">
+        <div className="container-page">
+          <Reveal>
+            <p className="kicker text-center">{t.awards.title}</p>
+          </Reveal>
+          <Reveal
+            stagger
+            className="mt-7 flex flex-wrap items-center justify-center gap-x-12 gap-y-6"
+          >
+            {images.awards.map((award) => (
+              <img
+                key={award.src}
+                src={award.src}
+                alt={award.alt}
+                loading="lazy"
+                className="h-18 w-auto sm:h-22"
+              />
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
       <section className="bg-brand-dark py-20 text-white lg:py-22">
         <Reveal stagger className="container-page grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <img
@@ -76,7 +99,11 @@ export default function Home() {
                 key={card}
                 className="rounded-[18px] bg-white/95 p-8 text-center shadow-card transition hover:-translate-y-1 hover:shadow-brand"
               >
-                <img src={images.why[i]} alt="" className="mx-auto mb-4 h-19 w-19 object-contain" />
+                <span
+                  aria-hidden="true"
+                  className="icon-mask mx-auto mb-4 block h-19 w-19 text-brand"
+                  style={{ '--icon': `url(${images.why[i]})` } as CSSProperties}
+                />
                 <h4 className="text-[19px] text-brand-dark">{card}</h4>
               </div>
             ))}
@@ -93,7 +120,13 @@ export default function Home() {
             <ul className="mt-7 grid gap-3.5">
               {t.diff.items.map((item) => (
                 <li key={item} className="flex items-center gap-3 text-[17px]">
-                  <img src={images.plus} alt="" className="h-6 w-6 shrink-0" />
+                  {/* the source tick is dark green on transparency — invisible on the
+                      green section, so knock it out to pure white */}
+                  <img
+                    src={images.plus}
+                    alt=""
+                    className="h-6 w-6 shrink-0 brightness-0 invert"
+                  />
                   {item}
                 </li>
               ))}

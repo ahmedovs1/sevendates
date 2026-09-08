@@ -18,7 +18,7 @@ export default function Footer() {
     <footer className="bg-brand-dark text-[15px] text-white/80">
       <div className="tricolore h-1" />
       <div className="container-page pb-6 pt-16">
-        <div className="grid gap-9 md:grid-cols-2 xl:grid-cols-[1.3fr_0.8fr_1fr_1fr]">
+        <div className="grid gap-9 md:grid-cols-2 xl:grid-cols-[1.2fr_0.7fr_repeat(3,1fr)]">
           <div>
             <img
               src={images.logo}
@@ -66,18 +66,22 @@ export default function Footer() {
                     {t.footer.call}
                   </button>
                 </li>
-                <li>
-                  {office.emails.map((mail) => (
-                    <a key={mail} href={`mailto:${mail}`} className="block hover:text-white">
-                      {mail}
-                    </a>
-                  ))}
-                  <span className="block text-xs text-white/60">{t.footer.mail}</span>
-                </li>
-                <li>
-                  <span className="block text-white">{t.footer.address}</span>
-                  {office.address}
-                </li>
+                {office.emails.length > 0 && (
+                  <li>
+                    {office.emails.map((mail) => (
+                      <a key={mail} href={`mailto:${mail}`} className="block hover:text-white">
+                        {mail}
+                      </a>
+                    ))}
+                    <span className="block text-xs text-white/60">{t.footer.mail}</span>
+                  </li>
+                )}
+                {office.address && (
+                  <li>
+                    <span className="block text-white">{t.footer.address}</span>
+                    {office.address}
+                  </li>
+                )}
               </ul>
             </div>
           ))}

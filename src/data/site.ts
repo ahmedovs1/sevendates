@@ -1,13 +1,15 @@
 export interface Office {
-  key: 'uz' | 'ru'
-  company: string
+  key: 'uz' | 'ru' | 'kz'
+  /** Falls back to the country name where a legal entity is not published. */
+  company?: string
   tin?: string
   phone: string
   phoneHref: string
-  address: string
+  address?: string
+  /** May be empty — the contact blocks hide the section rather than show a gap. */
   emails: string[]
   /** Google Maps embed used on the contacts page, same query as the original site. */
-  map: string
+  map?: string
 }
 
 export const offices: Office[] = [
@@ -29,6 +31,12 @@ export const offices: Office[] = [
     address: 'Терновая 20, Троицк, Mосква',
     emails: ['partner@sevendates.ru', 'jvgenerika@mail.ru'],
     map: 'https://maps.google.com/maps?q=%D0%A2%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F%2020%2C%20%D0%A2%D1%80%D0%BE%D0%B8%D1%86%D0%BA%2C%20M%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&t=m&z=14&output=embed&iwloc=near',
+  },
+  {
+    key: 'kz',
+    phone: '+7 (777) 030-66-88',
+    phoneHref: 'tel:+77770306688',
+    emails: ['partner@sevendates.ru'],
   },
 ]
 
@@ -111,6 +119,11 @@ export const images = {
     '/images/premiumIcon.png',
   ],
   partnership: ['/images/distributors.webp', '/images/retail.webp', '/images/horeca.webp'],
+  /** Award badges. The names are proper nouns, so they stay untranslated. */
+  awards: [
+    { src: '/images/reward1.jpg', alt: 'Free From Product Awards 2025 — Most Healthy' },
+    { src: '/images/reward2.jpg', alt: 'Plant-Based Excellence Awards 2024' },
+  ],
 }
 
 /** Route slugs, shared by the nav and the router (language prefix is added by `path()`). */

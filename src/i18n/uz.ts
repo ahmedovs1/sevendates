@@ -32,9 +32,12 @@ const dict: Dict = {
     sendWhatsapp: 'WhatsApp orqali yuborish',
   },
   hero: {
-    title: 'PREMIUM HALОL Xurmo asosidagi tabiiy ichimlik.',
+    title: 'PREMIUM HALОL Italiyadan tabiiy ichimlik',
     award: 'WINNER GOLD AWARD 2024, LONDON.',
     cta: "Ko'proq bilib oling",
+  },
+  awards: {
+    title: 'Bizning mukofotlarimiz',
   },
   pure: {
     title: 'Sof tarkib',
@@ -70,7 +73,6 @@ const dict: Dict = {
       'Tabiiy limon sharbati',
       "Alyuminiy idish(BPA yo'q)",
       'Gazlangan suv',
-      'Allergenlarsiz',
     ],
   },
   about: {
@@ -186,6 +188,7 @@ const dict: Dict = {
   countries: {
     uz: "O'zbekiston",
     ru: 'Rossiya',
+    kz: 'Qozog\u02bbiston',
   },
 }
 

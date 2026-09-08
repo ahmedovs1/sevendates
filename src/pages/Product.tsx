@@ -47,7 +47,13 @@ export default function Product() {
             <ul className="mt-7 grid gap-3.5">
               {t.diff.items.map((item) => (
                 <li key={item} className="flex items-center gap-3 text-[17px]">
-                  <img src={images.plus} alt="" className="h-6 w-6 shrink-0" />
+                  {/* the source tick is dark green on transparency — invisible on the
+                      green section, so knock it out to pure white */}
+                  <img
+                    src={images.plus}
+                    alt=""
+                    className="h-6 w-6 shrink-0 brightness-0 invert"
+                  />
                   {item}
                 </li>
               ))}

@@ -35,6 +35,7 @@ export interface Dict {
     sendWhatsapp: string
   }
   hero: { title: string; award: string; cta: string }
+  awards: { title: string }
   pure: { title: string; text: string; badges: string[] }
   why: { title: string; subtitle: string; cards: string[] }
   diff: { title: string; philosophy: string; text: string; items: string[] }
@@ -65,5 +66,5 @@ export interface Dict {
     legal: string
     rights: string
   }
-  countries: { uz: string; ru: string }
+  countries: { uz: string; ru: string; kz: string }
 }

@@ -32,9 +32,12 @@ const dict: Dict = {
     sendWhatsapp: 'Отправить в WhatsApp',
   },
   hero: {
-    title: 'PREMIUM HALAL Натуральный напиток на основе финика.',
+    title: 'PREMIUM HALAL Натуральный напиток из Италии',
     award: 'WINNER GOLD AWARD 2024, LONDON.',
     cta: 'Узнать больше',
+  },
+  awards: {
+    title: 'Наши награды',
   },
   pure: {
     title: 'Чистый состав',
@@ -70,7 +73,6 @@ const dict: Dict = {
       'Натуральный лимонный сок',
       'Алюминиевая Банка (Без БФА)',
       'Газированная вода',
-      'Без аллергенов',
     ],
   },
   about: {
@@ -181,6 +183,7 @@ const dict: Dict = {
   countries: {
     uz: 'Узбекистан',
     ru: 'Россия',
+    kz: 'Казахстан',
   },
 }
 
