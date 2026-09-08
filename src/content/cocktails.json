@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "lick-it-first",
+    "image": "/images/cocktails/lick-it-first.webp",
+    "name": "Lick it first",
+    "text": "A seductive and deeply warming winter infusion that engages all the senses. The King of Soft Drinks is gently heated with fresh citrus, fiery ginger, and aromatic star anise. The experience begins before the first sip: a plump, premium date, luxuriously softened in hot Seven Dates, rests across the glass inviting you to taste its sweet, spiced syrup first."
+  },
+  {
+    "slug": "winter-flame",
+    "image": "/images/cocktails/winter-flame.webp",
+    "name": "Winter Flame",
+    "text": "An intense, passionate winter classic elevated by the natural warmth of the King of Soft Drinks. The sharp contrast between the steaming, whiskey-spiked espresso base and the pristine chill of the fresh cream creates a luxurious sensory experience. A perfect harmony of fire and ice, designed to warm the soul on the coldest nights."
+  },
+  {
+    "slug": "cognac-crown",
+    "image": "/images/cocktails/cognac-crown.webp",
+    "name": "Cognac Crown",
+    "text": "A truly regal pairing that celebrates the art of simplicity. The rich, oak-aged depths of premium Cognac are elegantly lengthened and elevated by the crisp, sparkling embrace of the King of Soft Drinks. Served over crystal-clear ice, it is the ultimate expression of sophisticated, minimalist indulgence."
+  },
+  {
+    "slug": "cardamom-mule",
+    "image": "/images/cocktails/cardamom-mule.webp",
+    "name": "Cardamom Mule",
+    "text": "A vibrant and exotic reimagining of the classic Moscow Mule. The clean, sharp bite of premium vodka and fresh lime is perfectly balanced by the sparkling, natural sweetness of the King of Soft Drinks. Served in a traditional frosted copper mug, it delivers a refreshingly crisp and effortlessly elegant experience."
+  },
+  {
+    "slug": "amaretto-date",
+    "image": "/images/cocktails/amaretto-date.webp",
+    "name": "Amaretto Date",
+    "text": "A decadent and aromatic delight that beautifully transforms into liquid marzipan on the palate. The sweet, nutty warmth of premium Amaretto liqueur intertwines with a bright splash of citrus and the sparkling, spiced amber of the King of Soft Drinks. A sophisticated, dessert-like refreshment served ice-cold."
+  },
+  {
+    "slug": "spiced-gin-cooler",
+    "image": "/images/cocktails/spiced-gin-cooler.webp",
+    "name": "Spiced Gin Cooler",
+    "text": "A crisp, botanical masterpiece that beautifully elevates the classic gin experience. The clean, juniper-forward profile of premium London Dry Gin and bright lemon are elegantly lengthened by the natural, sparkling warmth of the King of Soft Drinks. A sophisticated, aromatic cooler with a perfectly balanced spicy bite."
+  }
+]

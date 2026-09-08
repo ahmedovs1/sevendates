@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Product from './pages/Product'
 import Advantages from './pages/Advantages'
 import Media from './pages/Media'
+import Mixology from './pages/Mixology'
 import NewsArticle from './pages/NewsArticle'
 import Contacts from './pages/Contacts'
 import Legal from './pages/Legal'
@@ -21,6 +22,7 @@ const pageRoutes = () => [
   <Route key="products" path="products" element={<Product />} />,
   <Route key="about" path="about" element={<Advantages />} />,
   <Route key="media" path="media" element={<Media />} />,
+  <Route key="mixology" path="mixology" element={<Mixology />} />,
   <Route key="news" path="news/:slug" element={<NewsArticle />} />,
   <Route key="contacts" path="contacts" element={<Contacts />} />,
   <Route key="police" path="police" element={<Legal doc="police" />} />,

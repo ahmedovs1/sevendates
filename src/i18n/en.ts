@@ -8,6 +8,7 @@ const dict: Dict = {
     product: 'Product',
     advantages: 'Advantages',
     media: 'Media',
+    mixology: 'Mixology',
     contacts: 'Contacts',
   },
   header: {
@@ -38,6 +39,21 @@ const dict: Dict = {
   },
   awards: {
     title: 'Our awards',
+  },
+  eventsPage: {
+    title: 'Events & Expos',
+    intro: "Here you'll find a comprehensive look at all the exciting events and dynamic expos we're involved in. From industry-leading conferences to exclusive showcases, discover where you can connect with us next.",
+  },
+  mixologyPage: {
+    title: 'Mixology Art',
+    intro: 'Recipes built on Seven Dates Original.',
+    tabMocktails: 'Mocktails (Non Alcoholic)',
+    tabCocktails: 'Cocktails (Alcoholic)',
+    ageTitle: 'Age Verification',
+    ageText:
+      'This section contains information about alcoholic beverages. You must be of legal drinking age in your country to view this content.',
+    ageYes: 'Yes, I am of legal age',
+    ageNo: 'No, exit',
   },
   pure: {
     title: 'Pure composition',

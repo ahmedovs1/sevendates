@@ -15,7 +15,7 @@ export interface Dict {
   code: LangCode
   label: string
   htmlLang: string
-  nav: { product: string; advantages: string; media: string; contacts: string }
+  nav: { product: string; advantages: string; media: string; mixology: string; contacts: string }
   header: { call: string; cta: string }
   modal: {
     title: string
@@ -36,6 +36,17 @@ export interface Dict {
   }
   hero: { title: string; award: string; cta: string }
   awards: { title: string }
+  eventsPage: { title: string; intro: string }
+  mixologyPage: {
+    title: string
+    intro: string
+    tabMocktails: string
+    tabCocktails: string
+    ageTitle: string
+    ageText: string
+    ageYes: string
+    ageNo: string
+  }
   pure: { title: string; text: string; badges: string[] }
   why: { title: string; subtitle: string; cards: string[] }
   diff: { title: string; philosophy: string; text: string; items: string[] }

@@ -1,15 +1,13 @@
-import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
-import { images, routes } from '../data/site'
-import newsContent from '../content/news.json'
-import type { NewsDoc } from '../content/types'
+import { images } from '../data/site'
+import eventContent from '../content/events.json'
+import type { EventItem } from '../content/types'
 import Reveal from '../components/Reveal'
 
-const news = newsContent as Record<string, NewsDoc>
+const events = eventContent as EventItem[]
 
 export default function Media() {
-  const { t, lang, path } = useI18n()
-  const article = news[lang]
+  const { t } = useI18n()
 
   return (
     <>
@@ -34,17 +32,6 @@ export default function Media() {
             {t.mediaPage.tagline}
           </p>
 
-          <Reveal stagger className="mt-10 grid gap-6 sm:grid-cols-2">
-            {images.gallery.map((src) => (
-              <img
-                key={src}
-                src={src}
-                alt=""
-                className="aspect-4/3 w-full rounded-[18px] object-cover shadow-card"
-              />
-            ))}
-          </Reveal>
-
           <p className="mt-14 text-center font-heading text-[clamp(20px,2.4vw,28px)] text-brand">
             {t.mediaPage.subtitle}
           </p>
@@ -63,25 +50,32 @@ export default function Media() {
         </div>
       </section>
 
-      <section className="bg-cream py-22">
+      {/* events & expos, mirrored from drink7dates.com/news.html */}
+      <section className="bg-cream py-16 lg:py-22">
         <div className="container-page">
-          <h3 className="section-title">{t.mediaPage.articlesTitle}</h3>
+          <Reveal>
+            <h2 className="section-title">{t.eventsPage.title}</h2>
+            <p className="section-subtitle">{t.eventsPage.intro}</p>
+          </Reveal>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {article && (
-              <Link
-                to={path(routes.news)}
-                className="flex flex-col overflow-hidden rounded-[18px] border border-line bg-white transition hover:-translate-y-1 hover:shadow-brand"
-              >
-                <img src={images.articleCard} alt="" className="aspect-16/10 w-full object-cover" />
-                <div className="flex flex-1 flex-col gap-3 p-6">
-                  <h4 className="text-[19px] text-brand-dark">{article.title}</h4>
-                  <span className="mt-auto text-sm font-semibold text-brand">
-                    {t.mediaPage.readMore}
-                  </span>
-                </div>
-              </Link>
-            )}
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {events.map((event) => (
+              <Reveal key={event.slug}>
+                <article className="flex h-full flex-col overflow-hidden rounded-[18px] border border-line bg-white shadow-card transition hover:-translate-y-1 hover:shadow-brand">
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    loading="lazy"
+                    className="aspect-16/10 w-full object-cover"
+                  />
+                  <div className="flex flex-1 flex-col gap-2.5 p-6">
+                    <span className="kicker">{event.dates}</span>
+                    <h3 className="text-[20px] text-brand">{event.title}</h3>
+                    <p className="text-[15px] text-muted">{event.text}</p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

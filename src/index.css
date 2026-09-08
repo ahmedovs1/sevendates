@@ -198,8 +198,9 @@
 /* ---------- section backdrops ---------- */
 @layer components {
   /* The photo is portrait (1024x1536), so a landscape hero always crops it
-     hard. Bias the crop upward on wide screens to keep the coastline, the
-     horizon and the top of the can in frame instead of just the can's middle. */
+     hard. The can's "SINCE 2010" sits at y≈1048 of 1536; this offset keeps it
+     inside the frame down to roughly a 2560px-wide viewport. Raising the offset
+     trades away the mountains at the top of the shot. */
   .hero-bg {
     background-color: var(--color-brand-deep);
     background-image: url('/images/background.png');
@@ -209,7 +210,7 @@
   }
   @media (min-width: 768px) {
     .hero-bg {
-      background-position: center 32%;
+      background-position: center 62%;
     }
   }
   .why-bg {

@@ -53,7 +53,7 @@ export default function Home() {
                 src={award.src}
                 alt={award.alt}
                 loading="lazy"
-                className="h-18 w-auto sm:h-22"
+                className="h-20 w-auto sm:h-40"
               />
             ))}
           </Reveal>

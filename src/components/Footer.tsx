@@ -11,6 +11,7 @@ export default function Footer() {
     { to: routes.product, label: t.nav.product },
     { to: routes.advantages, label: t.nav.advantages },
     { to: routes.media, label: t.nav.media },
+    { to: routes.mixology, label: t.nav.mixology },
     { to: routes.contacts, label: t.nav.contacts },
   ]
 
@@ -100,11 +101,11 @@ export default function Footer() {
             <span>{t.footer.rights}</span>
           </span>
         </div>
-          <span className="flex justify-end gap-4">
+          {/* <span className="flex justify-end gap-4">
             <Link to={"https://www.instagram.com/ahmedow.ll7/"} className="text-[12px] hover:text-white">
               Created by Muhammadaziz Ahmadjanov
             </Link>
-          </span>
+          </span> */}
       </div>
     </footer>
   )

@@ -19,6 +19,7 @@ export default function Header() {
     { to: routes.product, label: t.nav.product },
     { to: routes.advantages, label: t.nav.advantages },
     { to: routes.media, label: t.nav.media },
+    { to: routes.mixology, label: t.nav.mixology },
     { to: routes.contacts, label: t.nav.contacts },
   ]
 

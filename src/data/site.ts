@@ -126,6 +126,7 @@ export const images = {
   /** Award badges. The names are proper nouns, so they stay untranslated. */
   awards: [
     { src: '/images/reward1.jpg', alt: 'Free From Product Awards 2025 — Most Healthy' },
+    { src: '/images/reward3.png', alt: 'Anuga Taste Innovation Show — Top Innovation 2025' },
     { src: '/images/reward2.jpg', alt: 'Plant-Based Excellence Awards 2024' },
   ],
 }
@@ -136,6 +137,7 @@ export const routes = {
   product: '/products',
   advantages: '/about',
   media: '/media',
+  mixology: '/mixology',
   contacts: '/contacts',
   policy: '/police',
   consent: '/rules',

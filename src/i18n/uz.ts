@@ -8,6 +8,7 @@ const dict: Dict = {
     product: 'Mahsulot haqida',
     advantages: 'Afzalliklari',
     media: 'Yangiliklar',
+    mixology: 'Miksologiya',
     contacts: 'Aloqa',
   },
   header: {
@@ -38,6 +39,21 @@ const dict: Dict = {
   },
   awards: {
     title: 'Bizning mukofotlarimiz',
+  },
+  eventsPage: {
+    title: 'Tadbirlar va ko‘rgazmalar',
+    intro: 'Bu yerda biz ishtirok etadigan ko‘rgazmalar va tadbirlar to‘plangan. Soha konferensiyalaridan yopiq namoyishlargacha — bizni qayerda uchratishingiz mumkinligini biling.',
+  },
+  mixologyPage: {
+    title: 'Miksologiya san’ati',
+    intro: 'Seven Dates Original asosidagi retseptlar.',
+    tabMocktails: 'Mokteyllar (alkogolsiz)',
+    tabCocktails: 'Kokteyllar (alkogolli)',
+    ageTitle: 'Yoshni tasdiqlash',
+    ageText:
+      'Ushbu bo‘limda alkogolli ichimliklar haqida ma’lumot bor. Uni ko‘rish uchun mamlakatingizda spirtli ichimlik iste’mol qilish uchun ruxsat etilgan yoshga to‘lgan bo‘lishingiz kerak.',
+    ageYes: 'Ha, men voyaga yetganman',
+    ageNo: 'Yo‘q, chiqish',
   },
   pure: {
     title: 'Sof tarkib',
