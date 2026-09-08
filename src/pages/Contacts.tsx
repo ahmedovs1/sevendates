@@ -16,9 +16,7 @@ export default function Contacts() {
               className="grid items-stretch gap-8 rounded-[18px] border border-line p-6 lg:grid-cols-2 lg:p-8"
             >
               <div>
-                <span className="font-heading text-base uppercase tracking-[0.16em] text-gold">
-                  {t.countries[office.key]}
-                </span>
+                <span className="kicker">{t.countries[office.key]}</span>
                 <h1 className="mt-2 text-[clamp(22px,2.6vw,32px)] text-brand">{office.company}</h1>
                 {office.tin && <p className="text-sm text-muted">{office.tin}</p>}
 

@@ -1,5 +1,6 @@
 import { useI18n } from '../i18n'
 import { images } from '../data/site'
+import Reveal from '../components/Reveal'
 
 export default function Advantages() {
   const { t } = useI18n()
@@ -13,16 +14,16 @@ export default function Advantages() {
             {t.advantagesPage.compareTitle}
           </h1>
 
-          <div className="mt-12 overflow-hidden rounded-[18px] border border-line">
+          <Reveal className="mt-12 overflow-hidden rounded-[18px] border border-line">
             {/* column headers carry the two product shots, like the original */}
             <div className="grid sm:grid-cols-2">
               <div className="flex flex-col items-center gap-4 bg-[#efe9e0] p-6">
                 <img
                   src={images.compareRegular}
                   alt=""
-                  className="h-32 w-auto object-contain"
+                  className="h-45 w-auto object-contain"
                 />
-                <h3 className="text-center font-heading text-[19px] text-gold">
+                <h3 className="text-center font-body text-[19px] font-semibold text-muted">
                   {t.advantagesPage.colRegular}
                 </h3>
               </div>
@@ -30,9 +31,9 @@ export default function Advantages() {
                 <img
                   src={images.compareSeven}
                   alt={t.advantagesPage.colSeven}
-                  className="h-32 w-auto object-contain"
+                  className="h-45 w-auto object-contain"
                 />
-                <h3 className="text-center font-heading text-[19px] text-white">
+                <h3 className="text-center font-body text-[19px] font-semibold text-white">
                   {t.advantagesPage.colSeven}
                 </h3>
               </div>
@@ -49,14 +50,14 @@ export default function Advantages() {
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="bg-cream py-22">
         <div className="container-page">
           <h2 className="section-title">{t.advantagesPage.title}</h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal stagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {t.why.cards.map((card, i) => (
               <div
                 key={card}
@@ -70,7 +71,7 @@ export default function Advantages() {
                 <h4 className="text-[19px] text-brand-dark">{card}</h4>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

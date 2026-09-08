@@ -1,5 +1,6 @@
 import { useI18n } from '../i18n'
 import { images } from '../data/site'
+import Reveal from '../components/Reveal'
 
 export default function Product() {
   const { t } = useI18n()
@@ -11,7 +12,7 @@ export default function Product() {
         <div className="container-page">
           <h2 className="section-title">{t.productPage.title}</h2>
 
-          <div className="mt-12 grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr]">
+          <Reveal stagger className="mt-12 grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr]">
             <img
               src={images.product}
               alt={t.productPage.subtitle}
@@ -32,13 +33,13 @@ export default function Product() {
                 ))}
               </ul>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* what makes it different */}
       <section className="bg-brand py-22 text-white">
-        <div className="container-page grid items-center gap-14 lg:grid-cols-[1fr_0.9fr]">
+        <Reveal stagger className="container-page grid items-center gap-14 lg:grid-cols-[1fr_0.9fr]">
           <div>
             <h2 className="text-[clamp(24px,3vw,36px)] text-white">{t.diff.title}</h2>
             <p className="mt-5 font-heading text-xl text-sand">{t.diff.philosophy}</p>
@@ -57,7 +58,7 @@ export default function Product() {
             alt=""
             className="order-first mx-auto max-h-[560px] w-auto lg:order-none"
           />
-        </div>
+        </Reveal>
       </section>
     </>
   )

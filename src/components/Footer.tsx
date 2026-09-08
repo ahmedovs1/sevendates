@@ -15,8 +15,9 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-brand-dark pb-6 pt-16 text-[15px] text-white/80">
-      <div className="container-page">
+    <footer className="bg-brand-dark text-[15px] text-white/80">
+      <div className="tricolore h-1" />
+      <div className="container-page pb-6 pt-16">
         <div className="grid gap-9 md:grid-cols-2 xl:grid-cols-[1.3fr_0.8fr_1fr_1fr]">
           <div>
             <img
@@ -94,6 +95,11 @@ export default function Footer() {
             <span>{t.footer.rights}</span>
           </span>
         </div>
+          <span className="flex justify-end gap-4">
+            <Link to={"https://www.instagram.com/ahmedow.ll7/"} className="text-[12px] hover:text-white">
+              Created by Muhammadaziz Ahmadjanov
+            </Link>
+          </span>
       </div>
     </footer>
   )

@@ -24,6 +24,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-60 border-b border-line bg-white/95 backdrop-blur">
+      <div className="tricolore h-[3px]" />
       <div className="container-page flex min-h-[92px] items-center gap-6">
         <Link to={path(routes.home)} className="shrink-0">
           <img src={images.logo} alt="Seven Dates" className="h-11 w-auto" />
@@ -75,7 +76,7 @@ export default function Header() {
               ×
             </button>
             {links.map((link) => (
-              <Link key={link.to} to={path(link.to)} className="font-heading text-xl text-brand-dark">
+              <Link key={link.to} to={path(link.to)} className="text-lg font-semibold text-brand-dark">
                 {link.label}
               </Link>
             ))}

@@ -3,20 +3,30 @@
 
 /* ---------- design tokens ---------- */
 @theme {
-  --color-brand: #075d1b;
-  --color-brand-dark: #0a4217;
-  --color-gold: #6e5617;
-  --color-sand: #e9d9a2;
-  --color-ink: #1a1a1a;
-  --color-muted: #5c6660;
-  --color-line: #e3e7e4;
-  --color-cream: #f6f4ee;
+  /* Italian tricolore: green and red carry the brand, white is the ground.
+     `brand`/`accent` are darkened just enough to clear AA against white text;
+     `flag-green`/`flag-red` keep the exact flag values for the tricolore rules. */
+  --color-brand: #007a3d;
+  --color-brand-dark: #00552b;
+  --color-brand-deep: #00341b;
+  --color-flag-green: #009246;
 
-  --font-heading: 'Playfair Display', Georgia, serif;
+  --color-accent: #c8102e;
+  --color-accent-dark: #9e0c24;
+  --color-flag-red: #ce2b37;
+
+  --color-gold: #7a601a;
+  --color-sand: #f0e2b4;
+  --color-ink: #14181a;
+  --color-muted: #5a6461;
+  --color-line: #e4e8e5;
+  --color-cream: #f7f6f1;
+
+  --font-heading: 'Prata', Georgia, 'Times New Roman', serif;
   --font-body: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  --shadow-brand: 0 18px 40px rgba(7, 93, 27, 0.12);
-  --shadow-card: 0 10px 30px rgba(26, 26, 26, 0.07);
+  --shadow-brand: 0 18px 40px rgba(0, 122, 61, 0.14);
+  --shadow-card: 0 10px 30px rgba(20, 24, 26, 0.07);
 }
 
 /* ---------- base ---------- */
@@ -28,12 +38,19 @@
     @apply bg-white font-body text-ink antialiased;
     line-height: 1.6;
   }
+  /* Prata ships a single weight — headings stay at 400 so the browser never
+     synthesises a bold and smears the hairlines. */
   h1,
   h2,
-  h3,
+  h3 {
+    @apply font-heading font-normal leading-tight;
+    letter-spacing: -0.01em;
+  }
+  /* card- and label-sized headings keep the sans: Prata's thin strokes go
+     muddy below ~20px. */
   h4,
   h5 {
-    @apply font-heading font-medium leading-tight;
+    @apply font-body font-semibold leading-snug;
   }
 }
 
@@ -46,6 +63,7 @@
   /* one shared button shape, then a variant per look */
   .btn,
   .btn-primary,
+  .btn-accent,
   .btn-light,
   .btn-outline,
   .btn-ghost-light {
@@ -53,6 +71,9 @@
   }
   .btn-primary {
     @apply bg-brand text-white hover:bg-brand-dark;
+  }
+  .btn-accent {
+    @apply bg-accent text-white hover:bg-accent-dark;
   }
   .btn-light {
     @apply bg-white text-brand hover:bg-cream;
@@ -73,27 +94,111 @@
   .field {
     @apply w-full rounded-xl border border-line px-4 py-3 outline-none focus:border-brand;
   }
+
+  /* the flag itself, used as a hairline rule under the header and above the footer */
+  .tricolore {
+    background-image: linear-gradient(
+      to right,
+      var(--color-flag-green) 0 33.34%,
+      #ffffff 33.34% 66.67%,
+      var(--color-flag-red) 66.67% 100%
+    );
+  }
+  /* short tricolore dash that sits above a headline */
+  .tricolore-rule {
+    height: 3px;
+    width: 96px;
+    border-radius: 9999px;
+    background-image: linear-gradient(
+      to right,
+      var(--color-flag-green) 0 33.34%,
+      #ffffff 33.34% 66.67%,
+      var(--color-flag-red) 66.67% 100%
+    );
+  }
+  /* uppercase eyebrow above section headings */
+  .kicker {
+    @apply font-body text-[13px] font-bold uppercase tracking-[0.18em] text-accent;
+  }
 }
 
-/* ---------- section backdrops (same art per breakpoint as the original) ---------- */
+/* ---------- scroll reveal ---------- */
 @layer components {
+  /* Hidden only while still waiting. Once revealed the element has no opacity
+     rule of its own, so it is visible even if the animation never plays —
+     content must never depend on an animation finishing to be readable. */
+  .reveal:not(.is-revealed),
+  .reveal-stagger:not(.is-revealed) > * {
+    opacity: 0;
+  }
+  /* An animation rather than a transition: the cards carry their own
+     `transition hover:-translate-y-1`, and a transition here would override it.
+     Tailwind v4 writes hover translates to the separate `translate` property,
+     so the settled `transform: none` below never fights the hover lift. */
+  .reveal.is-revealed,
+  .reveal-stagger.is-revealed > * {
+    animation: reveal-up 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+  .reveal-stagger.is-revealed > *:nth-child(2) {
+    animation-delay: 80ms;
+  }
+  .reveal-stagger.is-revealed > *:nth-child(3) {
+    animation-delay: 160ms;
+  }
+  .reveal-stagger.is-revealed > *:nth-child(4) {
+    animation-delay: 240ms;
+  }
+  .reveal-stagger.is-revealed > *:nth-child(5) {
+    animation-delay: 320ms;
+  }
+  .reveal-stagger.is-revealed > *:nth-child(6) {
+    animation-delay: 400ms;
+  }
+
+  /* Matches the specificity of the hiding rule above — a media query adds none
+     of its own, so `.reveal` alone would lose to `.reveal:not(.is-revealed)`. */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal:not(.is-revealed),
+    .reveal-stagger:not(.is-revealed) > * {
+      opacity: 1;
+    }
+    .reveal.is-revealed,
+    .reveal-stagger.is-revealed > * {
+      animation: none;
+    }
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- section backdrops ---------- */
+@layer components {
+  /* The photo is portrait (1024x1536), so a landscape hero always crops it
+     hard. Bias the crop upward on wide screens to keep the coastline, the
+     horizon and the top of the can in frame instead of just the can's middle. */
   .hero-bg {
-    background-image: url('/images/mobileBGimg.webp');
+    background-color: var(--color-brand-deep);
+    background-image: url('/images/background.png');
     background-size: cover;
-    background-position: center;
+    background-position: 62% center;
+    background-repeat: no-repeat;
   }
   @media (min-width: 768px) {
     .hero-bg {
-      background-image: url('/images/planshetBg-scaled.webp');
-    }
-  }
-  @media (min-width: 1025px) {
-    .hero-bg {
-      background-image: url('/images/hero-1-scaled.webp');
+      background-position: center 32%;
     }
   }
   .why-bg {
-    background-color: #6e5617;
+    background-color: var(--color-brand-dark);
     background-image: url('/images/Untitled-design-2025-05-07T084009.092.png');
     background-size: cover;
     background-position: center;

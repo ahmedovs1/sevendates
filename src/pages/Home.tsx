@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import { images, routes } from '../data/site'
 import { useCallbackModal } from '../components/CallbackModal'
+import Reveal from '../components/Reveal'
 
 export default function Home() {
   const { t, path } = useI18n()
@@ -12,59 +13,64 @@ export default function Home() {
 
   return (
     <>
-      {/* 1. hero — headline, product shot and the "pure composition" block share one backdrop */}
-      <section className="hero-bg relative overflow-hidden text-white">
-        <div className="absolute inset-0 bg-linear-to-b from-brand-dark/80 via-brand-dark/65 to-brand-dark/85" />
+    
+      <section className="hero-bg relative flex min-h-[80vh] items-center overflow-hidden text-white lg:min-h-[88vh]">
+        <div className="absolute inset-0 bg-linear-to-b from-brand-deep/85 via-brand-deep/55 to-brand-deep/85 lg:bg-linear-to-r lg:from-brand-deep/92 lg:via-brand-deep/55 lg:to-transparent" />
 
-        <div className="container-page relative z-2 py-16 lg:py-20">
-          <div className="max-w-4xl text-center lg:text-left">
+        <div className="container-page relative z-2 py-20 lg:py-28">
+          <Reveal className="max-w-[640px] text-center lg:text-left">
+            <div className="tricolore-rule mx-auto mb-7 lg:mx-0" />
             <h1 className="text-[clamp(34px,5.2vw,62px)] leading-[1.08]">{t.hero.title}</h1>
-            <p className="mt-5 font-heading text-[clamp(16px,1.6vw,21px)] tracking-[0.08em] text-sand">
+            <p className="mt-5 text-[clamp(13px,1.2vw,15px)] font-bold uppercase tracking-[0.18em] text-sand">
               {t.hero.award}
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3.5 lg:justify-start">
+            <div className="mt-9 flex flex-wrap justify-center gap-3.5 lg:justify-start">
               <Link to={path(routes.product)} className="btn-light">
                 {t.hero.cta}
               </Link>
-              <button type="button" onClick={open} className="btn-ghost-light">
+              <button type="button" onClick={open} className="btn-accent">
                 {t.header.cta}
               </button>
             </div>
-          </div>
-
-          <div className="mt-16 grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-            <img
-              src={images.can}
-              alt="Seven Dates Original"
-              className="mx-auto max-h-[520px] w-auto drop-shadow-[0_30px_50px_rgba(0,0,0,0.45)]"
-            />
-            <div className="text-center lg:text-left">
-              <h2 className="text-[clamp(28px,4vw,46px)]">{t.pure.title}</h2>
-              <p className="mt-4 text-white/85">{t.pure.text}</p>
-
-              <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
-                {t.pure.badges.map((badge) => (
-                  <div
-                    key={badge}
-                    className="rounded-[18px] border border-white/20 bg-white/10 p-5 text-center backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/15"
-                  >
-                    <img src={images.cross} alt="" className="mx-auto mb-3 h-10 w-10 object-contain" />
-                    <h5 className="text-[15px] text-white">{badge}</h5>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* 2. why seven dates — gold backdrop, six icon cards */}
+     
+      <section className="bg-brand-dark py-20 text-white lg:py-22">
+        <Reveal stagger className="container-page grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <img
+            src={images.can}
+            alt="Seven Dates Original"
+            className="mx-auto max-h-[520px] w-auto drop-shadow-[0_30px_50px_rgba(0,0,0,0.45)]"
+          />
+          <div className="text-center lg:text-left">
+            <h2 className="text-[clamp(28px,4vw,46px)]">{t.pure.title}</h2>
+            <p className="mt-4 text-white/85">{t.pure.text}</p>
+
+            <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
+              {t.pure.badges.map((badge) => (
+                <div
+                  key={badge}
+                  className="rounded-[18px] border border-white/20 bg-white/10 p-5 text-center backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/15"
+                >
+                  <img src={images.cross} alt="" className="mx-auto mb-3 h-10 w-10 object-contain" />
+                  <h5 className="text-[15px] text-white">{badge}</h5>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       <section className="why-bg relative py-22">
-        <div className="absolute inset-0 bg-gold/80" />
+        <div className="absolute inset-0 bg-brand-dark/85" />
         <div className="container-page relative z-2 min-h-[700px] content-center">
-          <h2 className="section-title text-white">{t.why.title}</h2>
-          <p className="section-subtitle text-white/85">{t.why.subtitle}</p>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal>
+            <h2 className="section-title text-white">{t.why.title}</h2>
+            <p className="section-subtitle text-white/85">{t.why.subtitle}</p>
+          </Reveal>
+          <Reveal stagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {t.why.cards.map((card, i) => (
               <div
                 key={card}
@@ -74,13 +80,12 @@ export default function Home() {
                 <h4 className="text-[19px] text-brand-dark">{card}</h4>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* 3. what makes it different */}
       <section className="bg-brand py-22 text-white">
-        <div className="container-page grid items-center gap-14 lg:grid-cols-[1fr_0.9fr]">
+        <Reveal stagger className="container-page grid items-center gap-14 lg:grid-cols-[1fr_0.9fr]">
           <div>
             <h2 className="text-[clamp(24px,3vw,36px)] text-white">{t.diff.title}</h2>
             <p className="mt-5 font-heading text-xl text-sand">{t.diff.philosophy}</p>
@@ -99,16 +104,14 @@ export default function Home() {
             alt="Seven Dates Original"
             className="order-first mx-auto max-h-[560px] w-auto lg:order-none"
           />
-        </div>
+        </Reveal>
       </section>
 
       {/* 4. about */}
       <section className="py-22">
-        <div className="container-page grid items-center gap-14 lg:grid-cols-2">
+        <Reveal stagger className="container-page grid items-center gap-14 lg:grid-cols-2">
           <div>
-            <span className="font-heading text-base uppercase tracking-[0.16em] text-gold">
-              {t.about.kicker}
-            </span>
+            <span className="kicker">{t.about.kicker}</span>
             <h2 className="mt-2.5 text-[clamp(26px,3.2vw,40px)] text-brand">{t.about.title}</h2>
             <p className="mt-4 text-muted">{t.about.text}</p>
             <Link to={path(routes.product)} className="btn-outline mt-7">
@@ -120,13 +123,15 @@ export default function Home() {
             alt=""
             className="order-first rounded-[18px] shadow-brand lg:order-none"
           />
-        </div>
+        </Reveal>
       </section>
 
       {/* 5. partnership */}
       <section className="bg-cream py-22">
         <div className="container-page">
-          <h2 className="section-title">{t.partnership.title}</h2>
+          <Reveal>
+            <h2 className="section-title">{t.partnership.title}</h2>
+          </Reveal>
 
           <div className="mt-8 flex flex-wrap justify-center gap-2.5">
             {t.partnership.tabs.map((item, i) => (
@@ -145,7 +150,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-10 grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <Reveal stagger className="mt-10 grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <img
               src={images.partnership[tab]}
               alt={activeTab.label}
@@ -165,7 +170,7 @@ export default function Home() {
                 {t.partnership.cta}
               </button>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

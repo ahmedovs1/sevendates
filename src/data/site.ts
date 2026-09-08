@@ -37,6 +37,34 @@ export const primaryPhone = {
   href: 'tel:+998977574488',
 }
 
+/** Where a callback request is delivered: every address published on the site… */
+export const formRecipients = offices.flatMap((office) => office.emails)
+
+/** …plus the WhatsApp line that should receive the same request. */
+export const formWhatsapp = {
+  label: '+971 58 576 3933',
+  /** digits only — wa.me rejects spaces and a leading "+" */
+  number: '971585763933',
+}
+
+/**
+ * Delivery is configured with env vars so no keys live in the repo.
+ *
+ * VITE_WEB3FORMS_KEY — the one-step option: https://web3forms.com/ mails you an
+ *   access key, requests then land in that inbox the moment a visitor submits.
+ * VITE_FORM_ENDPOINT — any endpoint of your own (serverless function, CRM…)
+ *   that accepts a JSON POST. Takes priority when both are set.
+ *
+ * With neither set there is nothing that can send mail, so the modal falls back
+ * to handing the message to the visitor's own mail client or WhatsApp.
+ */
+export const formEndpoint = import.meta.env.VITE_FORM_ENDPOINT ?? ''
+export const web3formsKey = import.meta.env.VITE_WEB3FORMS_KEY ?? ''
+export const web3formsUrl = 'https://api.web3forms.com/submit'
+
+/** True when a submit can be delivered without the visitor doing anything. */
+export const canSendDirectly = Boolean(formEndpoint || web3formsKey)
+
 export const socials = [
   { label: 'Instagram', href: 'https://www.instagram.com/seven_dates.uz/' },
   { label: 'Telegram', href: 'https://t.me/sevendatesuz' },
@@ -56,7 +84,7 @@ export const images = {
   youtubeId: 'YAxfArXFKOY',
   product: '/images/Sevendates_rus.png',
   compareRegular: '/images/othe.png',
-  compareSeven: '/images/pr2.webp',
+  compareSeven: '/images/seven-dates-original.png',
   articleCard: '/images/image.png',
   gallery: [
     '/images/pic1-scaled.webp',

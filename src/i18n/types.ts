@@ -22,11 +22,17 @@ export interface Dict {
     subtitle: string
     name: string
     phone: string
+    email: string
+    message: string
     consent: string
     policy: string
     agreement: string
     submit: string
+    sending: string
     success: string
+    chooseChannel: string
+    sendMail: string
+    sendWhatsapp: string
   }
   hero: { title: string; award: string; cta: string }
   pure: { title: string; text: string; badges: string[] }
