@@ -26,8 +26,8 @@ export const offices: Office[] = [
   {
     key: 'ru',
     company: 'OOO JVGENERIKA',
-    phone: '+7 (916) 184-59-20',
-    phoneHref: 'tel:+79161845920',
+    phone: '+7 (960) 709-52-81',
+    phoneHref: 'tel:+79607095281',
     address: 'Терновая 20, Троицк, Mосква',
     emails: ['partner@sevendates.ru'],
     map: 'https://maps.google.com/maps?q=%D0%A2%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F%2020%2C%20%D0%A2%D1%80%D0%BE%D0%B8%D1%86%D0%BA%2C%20M%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&t=m&z=14&output=embed&iwloc=near',
