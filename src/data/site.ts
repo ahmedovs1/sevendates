@@ -29,14 +29,17 @@ export const offices: Office[] = [
     phone: '+7 (916) 184-59-20',
     phoneHref: 'tel:+79161845920',
     address: 'Терновая 20, Троицк, Mосква',
-    emails: ['partner@sevendates.ru', 'jvgenerika@mail.ru'],
+    emails: ['partner@sevendates.ru'],
     map: 'https://maps.google.com/maps?q=%D0%A2%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F%2020%2C%20%D0%A2%D1%80%D0%BE%D0%B8%D1%86%D0%BA%2C%20M%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&t=m&z=14&output=embed&iwloc=near',
   },
   {
     key: 'kz',
+    company: 'ТОО GENERIKAKZ',
     phone: '+7 (777) 030-66-88',
     phoneHref: 'tel:+77770306688',
+    address: 'ул. Карасай баты 90/92, 33, г. Алматы',
     emails: ['partner@sevendates.ru'],
+    map: 'https://maps.google.com/maps?q=%D1%83%D0%BB.%20%D0%9A%D0%B0%D1%80%D0%B0%D1%81%D0%B0%D0%B9%20%D0%B1%D0%B0%D1%82%D1%8B%2090%2F92%2C%20%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B%2C%20%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD&t=m&z=16&output=embed&iwloc=near',
   },
 ]
 
@@ -74,6 +77,7 @@ export const web3formsUrl = 'https://api.web3forms.com/submit'
 export const canSendDirectly = Boolean(formEndpoint || web3formsKey)
 
 export const socials = [
+  { label: 'WhatsApp', href: `https://wa.me/${formWhatsapp.number}` },
   { label: 'Instagram', href: 'https://www.instagram.com/seven_dates.uz/' },
   { label: 'Telegram', href: 'https://t.me/sevendatesuz' },
   { label: 'Youtube', href: 'https://www.youtube.com/@SEVENDATES-h9' },

@@ -20,11 +20,12 @@ export default function Footer() {
       <div className="container-page pb-6 pt-16">
         <div className="grid gap-9 md:grid-cols-2 xl:grid-cols-[1.2fr_0.7fr_repeat(3,1fr)]">
           <div>
-            <img
-              src={images.logo}
-              alt="Seven Dates"
-              className="mb-4 h-11 w-auto brightness-0 invert"
-            />
+            {/* The mark is outlined green letters with a light fill and a gold
+                palm, so knocking it to white collapses every detail into one
+                blob. Keep the artwork and give it a light plate to sit on. */}
+            <span className="mb-5 inline-flex rounded-2xl bg-white px-5 py-3.5">
+              <img src={images.logo} alt="Seven Dates" className="h-11 w-auto" />
+            </span>
             <p>{t.footer.desc}</p>
             <div className="mt-5 flex flex-wrap gap-3">
               {socials.map((s) => (
