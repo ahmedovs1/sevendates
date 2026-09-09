@@ -6,3 +6,10 @@ dist
 # local secrets
 .env
 .env.local
+
+deploy
+
+# Боевые данные админки: пароли редакторов и правки контента.
+# В репозитории им не место — их бы затирал каждый git pull на сервере.
+server/data/
+server/uploads/
