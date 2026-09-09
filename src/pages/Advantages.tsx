@@ -1,5 +1,6 @@
 import { useI18n } from '../i18n'
 import { images } from '../data/site'
+import CrossMark from '../components/CrossMark'
 import Reveal from '../components/Reveal'
 
 export default function Advantages() {
@@ -42,7 +43,7 @@ export default function Advantages() {
             {t.advantagesPage.rows.map((row) => (
               <div key={row.good} className="grid sm:grid-cols-2">
                 <div className="flex gap-3 border-t border-line bg-[#fbfaf7] p-6 text-[15px] text-muted">
-                  <img src={images.cross} alt="" className="h-7 w-7 shrink-0 object-contain" />
+                  <CrossMark className="mt-0.5 h-6 w-6 shrink-0 text-accent" />
                   <span>{row.bad}</span>
                 </div>
                 <div className="border-t border-line p-6 text-[15px] font-medium text-brand-dark sm:border-l">

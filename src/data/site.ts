@@ -1,14 +1,11 @@
 export interface Office {
   key: 'uz' | 'ru' | 'kz'
-  /** Falls back to the country name where a legal entity is not published. */
   company?: string
   tin?: string
   phone: string
   phoneHref: string
   address?: string
-  /** May be empty — the contact blocks hide the section rather than show a gap. */
   emails: string[]
-  /** Google Maps embed used on the contacts page, same query as the original site. */
   map?: string
 }
 
@@ -58,17 +55,7 @@ export const formWhatsapp = {
   number: '971585763933',
 }
 
-/**
- * Delivery is configured with env vars so no keys live in the repo.
- *
- * VITE_WEB3FORMS_KEY — the one-step option: https://web3forms.com/ mails you an
- *   access key, requests then land in that inbox the moment a visitor submits.
- * VITE_FORM_ENDPOINT — any endpoint of your own (serverless function, CRM…)
- *   that accepts a JSON POST. Takes priority when both are set.
- *
- * With neither set there is nothing that can send mail, so the modal falls back
- * to handing the message to the visitor's own mail client or WhatsApp.
- */
+
 export const formEndpoint = import.meta.env.VITE_FORM_ENDPOINT ?? ''
 export const web3formsKey = import.meta.env.VITE_WEB3FORMS_KEY ?? ''
 export const web3formsUrl = 'https://api.web3forms.com/submit'
@@ -78,8 +65,9 @@ export const canSendDirectly = Boolean(formEndpoint || web3formsKey)
 
 export const socials = [
   { label: 'WhatsApp', href: `https://wa.me/${formWhatsapp.number}` },
-  { label: 'Instagram', href: 'https://www.instagram.com/seven_dates.uz/' },
-  { label: 'Telegram', href: 'https://t.me/sevendatesuz' },
+  { label: 'Instagram UZ', href: 'https://www.instagram.com/seven_dates.uz/' },
+  { label: 'Instagram KZ', href: 'https://www.instagram.com/seven_dates.kz/' },
+  { label: 'Telegram', href: 'https://t.me/pilsuz' },
   { label: 'Youtube', href: 'https://www.youtube.com/@SEVENDATES-h9' },
 ]
 
@@ -131,7 +119,6 @@ export const images = {
   ],
 }
 
-/** Route slugs, shared by the nav and the router (language prefix is added by `path()`). */
 export const routes = {
   home: '/',
   product: '/products',

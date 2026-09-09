@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import { images, routes } from '../data/site'
 import { useCallbackModal } from '../components/CallbackModal'
+import CrossMark from '../components/CrossMark'
 import Reveal from '../components/Reveal'
 
 export default function Home() {
@@ -75,10 +76,10 @@ export default function Home() {
               {t.pure.badges.map((badge) => (
                 <div
                   key={badge}
-                  className="rounded-[18px] border border-white/20 bg-white/10 p-5 text-center backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/15"
+                  className="rounded-[18px] bg-white p-5 text-center shadow-card transition hover:-translate-y-1 hover:shadow-brand"
                 >
-                  <img src={images.cross} alt="" className="mx-auto mb-3 h-10 w-10 object-contain" />
-                  <h5 className="text-[15px] text-white">{badge}</h5>
+                  <CrossMark className="mx-auto mb-3 h-8 w-8 text-accent" />
+                  <h5 className="text-[15px] text-brand-dark">{badge}</h5>
                 </div>
               ))}
             </div>

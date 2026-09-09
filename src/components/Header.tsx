@@ -15,6 +15,20 @@ export default function Header() {
     setDrawer(false)
   }, [pathname])
 
+  useEffect(() => {
+    if (!drawer) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setDrawer(false)
+    const onResize = () => window.innerWidth >= 1024 && setDrawer(false)
+    document.addEventListener('keydown', onKey)
+    window.addEventListener('resize', onResize)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      window.removeEventListener('resize', onResize)
+      document.body.style.overflow = ''
+    }
+  }, [drawer])
+
   const links = [
     { to: routes.product, label: t.nav.product },
     { to: routes.advantages, label: t.nav.advantages },
@@ -24,11 +38,15 @@ export default function Header() {
   ]
 
   return (
-    <header className="sticky top-0 z-60 border-b border-line bg-white/95 backdrop-blur">
-      <div className="tricolore h-[3px]" />
-      <div className="container-page flex min-h-[120px] items-center gap-6">
+    <header className="sticky top-0 z-60">
+      {/* The blur lives here, not on <header>: an element with backdrop-filter
+          becomes the containing block for `position: fixed` children, which
+          clamped the drawer below to the height of the bar. */}
+      <div className="border-b border-line bg-white/95 backdrop-blur">
+        <div className="tricolore h-[3px]" />
+        <div className="container-page flex min-h-[72px] items-center gap-4 sm:min-h-[92px] sm:gap-6 lg:min-h-[120px]">
         <Link to={path(routes.home)} className="shrink-0">
-          <img src={images.logo} alt="Seven Dates" className="h-20 w-auto" />
+          <img src={images.logo} alt="Seven Dates" className="h-11 w-auto sm:h-16 lg:h-20" />
         </Link>
 
         <nav className="ml-auto hidden gap-6 text-[15px] font-medium lg:flex">
@@ -59,6 +77,7 @@ export default function Header() {
           >
             ☰
           </button>
+        </div>
         </div>
       </div>
 
