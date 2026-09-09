@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useI18n } from '../i18n'
-import { images, primaryPhone, routes } from '../data/site'
+import { images, routes } from '../data/site'
+import { useContent } from '../content/ContentProvider'
 import { useCallbackModal } from './CallbackModal'
 import LangSwitcher from './LangSwitcher'
 
@@ -9,6 +10,7 @@ export default function Header() {
   const { t, path } = useI18n()
   const { open } = useCallbackModal()
   const { pathname } = useLocation()
+  const { primaryPhone } = useContent()
   const [drawer, setDrawer] = useState(false)
 
   useEffect(() => {

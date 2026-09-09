@@ -13,7 +13,7 @@ const dict: Dict = {
   },
   header: {
     call: "Qo'ng'iroq qilish",
-    cta: "Hozir sinab ko'ring",
+    cta: "Ariza qoldirish",
   },
   modal: {
     title: "So'rov qoldiring",

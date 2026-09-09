@@ -5,10 +5,12 @@ import { images, routes } from '../data/site'
 import { useCallbackModal } from '../components/CallbackModal'
 import CrossMark from '../components/CrossMark'
 import Reveal from '../components/Reveal'
+import { useContent } from '../content/ContentProvider'
 
 export default function Home() {
   const { t, path } = useI18n()
   const { open } = useCallbackModal()
+  const { awards } = useContent()
   const [tab, setTab] = useState(0)
   const activeTab = t.partnership.tabs[tab]
 
@@ -48,7 +50,7 @@ export default function Home() {
             stagger
             className="mt-7 flex flex-wrap items-center justify-center gap-x-12 gap-y-6"
           >
-            {images.awards.map((award) => (
+            {awards.map((award) => (
               <img
                 key={award.src}
                 src={award.src}

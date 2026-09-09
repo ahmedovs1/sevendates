@@ -1,5 +1,8 @@
 export interface Office {
-  key: 'uz' | 'ru' | 'kz'
+  /** Free-form id. The three built-ins reuse the i18n country names. */
+  key: string
+  /** Display name. Needed for countries the dictionary does not know. */
+  country?: string
   company?: string
   tin?: string
   phone: string
@@ -10,16 +13,6 @@ export interface Office {
 }
 
 export const offices: Office[] = [
-  {
-    key: 'uz',
-    company: 'CП OOO «METAMED»',
-    tin: 'ИНН: 309116608',
-    phone: '+998 (97) 757-44-88',
-    phoneHref: 'tel:+998977574488',
-    address: 'Сергелийский район, Олтинводий 111, Ташкент, 100046',
-    emails: ['info@sevendates.uz', 'partner@sevendates.uz'],
-    map: 'https://maps.google.com/maps?q=%D0%A3%D0%B7%D0%B1%D0%B5%D0%BA%D0%B8%D1%81%D1%82%D0%B0%D0%BD%20%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%20%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%2C%20Metamed&t=m&z=16&output=embed&iwloc=near',
-  },
   {
     key: 'ru',
     company: 'OOO JVGENERIKA',
@@ -38,7 +31,25 @@ export const offices: Office[] = [
     emails: ['partner@sevendates.ru'],
     map: 'https://maps.google.com/maps?q=%D1%83%D0%BB.%20%D0%9A%D0%B0%D1%80%D0%B0%D1%81%D0%B0%D0%B9%20%D0%B1%D0%B0%D1%82%D1%8B%2090%2F92%2C%20%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B%2C%20%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD&t=m&z=16&output=embed&iwloc=near',
   },
+  {
+    key: 'uz',
+    company: 'CП OOO «METAMED»',
+    tin: 'ИНН: 309116608',
+    phone: '+998 (97) 757-44-88',
+    phoneHref: 'tel:+998977574488',
+    address: 'Сергелийский район, Олтинводий 111, Ташкент, 100046',
+    emails: ['info@sevendates.uz', 'partner@sevendates.uz'],
+    map: 'https://maps.google.com/maps?q=%D0%A3%D0%B7%D0%B1%D0%B5%D0%BA%D0%B8%D1%81%D1%82%D0%B0%D0%BD%20%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%20%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%2C%20Metamed&t=m&z=16&output=embed&iwloc=near',
+  },
 ]
+
+/** Country label: an explicit one wins, then the dictionary, then the raw key. */
+export function officeCountry(
+  office: Office,
+  countries: Record<string, string | undefined>,
+): string {
+  return office.country?.trim() || countries[office.key] || office.key
+}
 
 export const primaryPhone = {
   label: '+998 97 757-44-88',

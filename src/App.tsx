@@ -1,11 +1,13 @@
 import { Route, Routes } from 'react-router-dom'
 import { I18nProvider } from './i18n'
+import { ContentProvider } from './content/ContentProvider'
 import { CallbackModalProvider } from './components/CallbackModal'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Product from './pages/Product'
 import Advantages from './pages/Advantages'
 import Media from './pages/Media'
+import Admin from './pages/Admin'
 import Mixology from './pages/Mixology'
 import NewsArticle from './pages/NewsArticle'
 import Contacts from './pages/Contacts'
@@ -33,16 +35,19 @@ const pageRoutes = () => [
 
 export default function App() {
   return (
-    <I18nProvider>
-      <CallbackModalProvider>
+    <ContentProvider>
+      <I18nProvider>
+        <CallbackModalProvider>
         <Routes>
+          <Route path="/admin" element={<Admin />} />
           {LANG_PREFIXES.map((prefix) => (
             <Route key={prefix} path={prefix} element={<Layout />}>
               {pageRoutes()}
             </Route>
           ))}
         </Routes>
-      </CallbackModalProvider>
-    </I18nProvider>
+        </CallbackModalProvider>
+      </I18nProvider>
+    </ContentProvider>
   )
 }

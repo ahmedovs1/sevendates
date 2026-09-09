@@ -1,8 +1,10 @@
 import { useI18n } from '../i18n'
-import { offices } from '../data/site'
+import { officeCountry } from '../data/site'
+import { useContent } from '../content/ContentProvider'
 
 export default function Contacts() {
   const { t } = useI18n()
+  const { offices } = useContent()
 
   return (
     <section className="py-16 lg:py-22">
@@ -18,9 +20,9 @@ export default function Contacts() {
               }`}
             >
               <div>
-                <span className="kicker">{t.countries[office.key]}</span>
+                <span className="kicker">{officeCountry(office, t.countries)}</span>
                 <h1 className="mt-2 text-[clamp(22px,2.6vw,32px)] text-brand">
-                  {office.company ?? t.countries[office.key]}
+                  {office.company ?? officeCountry(office, t.countries)}
                 </h1>
                 {office.tin && <p className="text-sm text-muted">{office.tin}</p>}
 
@@ -57,7 +59,7 @@ export default function Contacts() {
               {office.map && (
                 <iframe
                   src={office.map}
-                  title={t.countries[office.key]}
+                  title={officeCountry(office, t.countries)}
                   loading="lazy"
                   className="min-h-[320px] w-full rounded-[18px] border-0"
                   referrerPolicy="no-referrer-when-downgrade"

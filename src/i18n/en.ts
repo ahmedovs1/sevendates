@@ -13,7 +13,7 @@ const dict: Dict = {
   },
   header: {
     call: 'Request a call',
-    cta: 'Try it now',
+    cta: 'Submit an application',
   },
   modal: {
     title: 'Leave a request',

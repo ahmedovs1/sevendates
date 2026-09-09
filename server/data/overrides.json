@@ -1,0 +1,45 @@
+{
+  "seo": {},
+  "contacts": {},
+  "texts": {},
+  "lists": {
+    "mocktails": [
+      {
+        "slug": "the-last-temptation",
+        "image": "/images/mocktails/the-last-temptation.webp",
+        "name": "The Last Temptation",
+        "text": "A warm and enveloping embrace that seduces the senses without the need for alcohol. The natural richness of the King of Soft Drinks fuses with the rustic sweetness of cloudy apple, gently hot-infused with fresh ginger, orange, and star anise. An elegant, fragrant winter temptation, irresistible from the very first sip."
+      },
+      {
+        "slug": "queens-winter-cloud",
+        "image": "/images/mocktails/queens-winter-cloud.webp",
+        "name": "Queen's Winter Cloud",
+        "text": "A sumptuous evolution that transforms the King of Soft Drinks into a velvety, full-bodied experience through the addition of pure dark chocolate. The intense ebony hue and thick texture beautifully meet the airy lightness of fresh whipped cream, creating a regal contrast between the bitter depth of cocoa and the warm, inherent spices of the date. A masterpiece of elegance designed for those seeking a profound, uncompromising indulgence."
+      },
+      {
+        "slug": "the-golden-cardamom",
+        "image": "/images/mocktails/the-golden-cardamom.webp",
+        "name": "The Golden Cardamom",
+        "text": "A radiant, alcohol-free tropical escape that pairs the bright, sunny sweetness of pineapple with the sparkling, spiced amber of the King of Soft Drinks. A delicate shaken foam crowned with an aromatic dusting of exotic cardamom delivers a golden, sophisticated refreshment that effortlessly invigorates the senses."
+      },
+      {
+        "slug": "coco-date",
+        "image": "/images/mocktails/coco-date.webp",
+        "name": "Coco-Date (Tropical Twist)",
+        "text": "A profoundly hydrating and exotic escape that instantly transports the palate to sun-drenched shores. The pristine, refreshing purity of natural coconut water and a rich touch of date concentrate seamlessly meld with the crisp, sparkling vitality of the King of Soft Drinks. A brilliantly refreshing, naturally revitalizing tropical oasis."
+      },
+      {
+        "slug": "iced-tea-of-the-earl",
+        "image": "/images/mocktails/iced-tea-of-the-earl.webp",
+        "name": "Iced Tea of the Earl",
+        "text": "A masterclass in elegant, sophisticated refreshment. The aristocratic, citrus-forward bergamot notes of Cold Brew Earl Grey tea and a delicate touch of honey are beautifully elevated by the sparkling, natural warmth of the King of Soft Drinks. A refined, highly aromatic non-alcoholic experience designed for the most discerning palate."
+      },
+      {
+        "slug": "vanilla-date-dream",
+        "image": "/images/mocktails/vanilla-date-dream.webp",
+        "name": "Vanilla Date Dream",
+        "text": "A sumptuously smooth and aromatic indulgence that brilliantly elevates the natural profile of the King of Soft Drinks. The delicate, sweet warmth of pure vanilla flawlessly rounds out the deep, inherent spices of Seven Dates, creating a seamless, velvety non-alcoholic experience. A dreamy, elegant refreshment perfect for any time of day."
+      }
+    ]
+  }
+}

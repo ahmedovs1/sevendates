@@ -52,7 +52,6 @@ function CallbackModal({ onClose }: { onClose: () => void }) {
     consent: false,
   })
 
-  // one plain-text body, reused by every delivery channel
   const subject = `${t.modal.title} — Seven Dates`
   const summary = [
     `${t.modal.name}: ${form.name}`,
@@ -162,11 +161,6 @@ function CallbackModal({ onClose }: { onClose: () => void }) {
             >
               {t.modal.sendWhatsapp}
             </a>
-
-            <p className="mt-5 text-center text-[13px] leading-relaxed text-muted">
-              {formRecipients.join(' · ')}
-              <span className="block">{formWhatsapp.label}</span>
-            </p>
           </div>
         ) : (
           <form onSubmit={submit}>

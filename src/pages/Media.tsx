@@ -1,13 +1,11 @@
 import { useI18n } from '../i18n'
 import { images } from '../data/site'
-import eventContent from '../content/events.json'
-import type { EventItem } from '../content/types'
 import Reveal from '../components/Reveal'
-
-const events = eventContent as EventItem[]
+import { useContent } from '../content/ContentProvider'
 
 export default function Media() {
   const { t } = useI18n()
+  const { events } = useContent()
 
   return (
     <>

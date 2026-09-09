@@ -1,5 +1,7 @@
 import { createContext, useContext, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useContent } from '../content/ContentProvider'
+import { applyTexts } from '../content/overrides'
 import ru from './ru'
 import en from './en'
 import uz from './uz'
@@ -44,10 +46,16 @@ const I18nContext = createContext<I18nValue>({
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation()
+  const { overrides } = useContent()
   const value = useMemo<I18nValue>(() => {
     const lang = langFromPath(pathname)
-    return { lang, t: dictionaries[lang], path: (p: string) => localizePath(p, lang) }
-  }, [pathname])
+    return {
+      lang,
+      // Edited lines win; everything else stays as compiled.
+      t: applyTexts(dictionaries[lang], overrides.texts?.[lang]),
+      path: (p: string) => localizePath(p, lang),
+    }
+  }, [pathname, overrides])
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
 }

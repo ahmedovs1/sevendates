@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
-import { images, offices, routes, socials } from '../data/site'
+import { images, officeCountry, routes } from '../data/site'
+import { useContent } from '../content/ContentProvider'
 import { useCallbackModal } from './CallbackModal'
 
 export default function Footer() {
   const { t, path } = useI18n()
   const { open } = useCallbackModal()
+  const { offices, socials } = useContent()
 
   const links = [
     { to: routes.product, label: t.nav.product },
@@ -58,7 +60,7 @@ export default function Footer() {
 
           {offices.map((office) => (
             <div key={office.key}>
-              <h4 className="mb-4 text-lg text-white">{t.countries[office.key]}</h4>
+              <h4 className="mb-4 text-lg text-white">{officeCountry(office, t.countries)}</h4>
               <ul className="grid gap-2.5">
                 <li>
                   <a href={office.phoneHref} className="hover:text-white">

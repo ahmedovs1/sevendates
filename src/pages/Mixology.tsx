@@ -1,15 +1,11 @@
 import { useState } from 'react'
 import { useI18n } from '../i18n'
 import Reveal from '../components/Reveal'
-import cocktailContent from '../content/cocktails.json'
-import mocktailContent from '../content/mocktails.json'
-import type { Drink } from '../content/types'
-
-const cocktails = cocktailContent as Drink[]
-const mocktails = mocktailContent as Drink[]
+import { useContent } from '../content/ContentProvider'
 
 export default function Mixology() {
   const { t } = useI18n()
+  const { cocktails, mocktails } = useContent()
   /** Mocktails open by default; the alcoholic tab is gated. */
   const [tab, setTab] = useState<'mocktails' | 'cocktails'>('mocktails')
   const [ageConfirmed, setAgeConfirmed] = useState(false)

@@ -1,12 +1,14 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useI18n } from '../i18n'
+import { useDocumentMeta } from '../content/useDocumentMeta'
 import Header from './Header'
 import Footer from './Footer'
 
 export default function Layout() {
   const { pathname } = useLocation()
   const { t } = useI18n()
+  useDocumentMeta()
 
   useEffect(() => {
     window.scrollTo(0, 0)
