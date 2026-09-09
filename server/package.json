@@ -5,11 +5,14 @@
   "type": "module",
   "description": "Server-side relay for the callback form. Holds the SMTP credentials so they never reach the browser.",
   "scripts": {
-    "start": "node --env-file=.env index.js",
-    "verify": "node --env-file=.env verify-smtp.js"
+    "start": "node index.js",
+    "verify": "node verify-smtp.js"
   },
   "dependencies": {
     "express": "^4.21.2",
     "nodemailer": "^6.9.16"
+  },
+  "engines": {
+    "node": ">=18.18"
   }
 }

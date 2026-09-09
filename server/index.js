@@ -1,6 +1,5 @@
 import express from 'express'
 import nodemailer from 'nodemailer'
-import { existsSync } from 'node:fs'
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { extname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -16,16 +15,10 @@ import {
   verifyUser,
 } from './lib/users.js'
 import { DEFAULT_SEO, LANGS, injectMeta } from './lib/seo.js'
+import { loadEnv } from './lib/env.js'
 
-/*
- * Load .env when the process was started plainly as `node <file>.js`.
- * systemd passes the variables itself via EnvironmentFile, and `npm start`
- * uses --env-file, so in both of those cases this is a no-op.
- */
-const envFile = fileURLToPath(new URL('.env', import.meta.url))
-if (!process.env.SMTP_HOST && existsSync(envFile)) {
-  process.loadEnvFile(envFile)
-}
+// Values already in the environment win, so PM2 and systemd stay in control.
+loadEnv(fileURLToPath(new URL('.env', import.meta.url)))
 
 const {
   PORT = 8787,

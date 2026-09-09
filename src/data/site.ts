@@ -67,7 +67,20 @@ export const formWhatsapp = {
 }
 
 
-export const formEndpoint = import.meta.env.VITE_FORM_ENDPOINT ?? ''
+/**
+ * Как обращаться к сервису.
+ *
+ * `path` — обычный /api/... , когда веб-сервер проксирует на Node.
+ * `php`  — через мост api.php, когда проксирование недоступно: nginx не пускает
+ *          запросы на 127.0.0.1:8787, а PHP выполняется на самом сервере и
+ *          спокойно до него достаёт.
+ */
+const apiStyle = import.meta.env.VITE_API_STYLE === 'php' ? 'php' : 'path'
+
+export const apiUrl = (endpoint: string) =>
+  apiStyle === 'php' ? `/api.php?p=${endpoint}` : `/api/${endpoint}`
+
+export const formEndpoint = import.meta.env.VITE_FORM_ENDPOINT || apiUrl('send')
 export const web3formsKey = import.meta.env.VITE_WEB3FORMS_KEY ?? ''
 export const web3formsUrl = 'https://api.web3forms.com/submit'
 

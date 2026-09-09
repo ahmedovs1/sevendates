@@ -1,5 +1,11 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
-import { offices as builtInOffices, socials as builtInSocials, primaryPhone as builtInPhone, images } from '../data/site'
+import {
+  apiUrl,
+  offices as builtInOffices,
+  socials as builtInSocials,
+  primaryPhone as builtInPhone,
+  images,
+} from '../data/site'
 import eventContent from './events.json'
 import cocktailContent from './cocktails.json'
 import mocktailContent from './mocktails.json'
@@ -56,7 +62,7 @@ export function ContentProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     let alive = true
-    fetch('/api/content')
+    fetch(apiUrl('content'))
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((data: Partial<Overrides> & { seoDefaults?: SeoDefaults }) => {
         if (!alive) return

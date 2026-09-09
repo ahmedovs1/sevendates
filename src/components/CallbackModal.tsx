@@ -80,6 +80,30 @@ function CallbackModal({ onClose }: { onClose: () => void }) {
     }
 
     setStatus('sending')
+
+    // Two independent routes. The relay is preferred — it sends from the
+    // company's own mailbox — but on hosting where /api is not proxied it
+    // answers 404, and then the form must still work rather than dead-end.
+    const viaWeb3Forms = () =>
+      fetch(web3formsUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: web3formsKey,
+          subject,
+          from_name: 'Seven Dates',
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
+          page: window.location.href,
+        }),
+      })
+        .then((r) => r.json())
+        .then((body: { success?: boolean }) => {
+          if (!body.success) throw new Error('Rejected by the mail service')
+        })
+
     try {
       const res = formEndpoint
         ? await fetch(formEndpoint, {
@@ -117,7 +141,17 @@ function CallbackModal({ onClose }: { onClose: () => void }) {
       }
       setStatus('sent')
     } catch {
-      // service down or misconfigured — fall back rather than lose the lead
+      // The relay did not take it. Try the keyed service before giving up, so a
+      // proxy that is not configured yet never costs a lead.
+      if (formEndpoint && web3formsKey) {
+        try {
+          await viaWeb3Forms()
+          setStatus('sent')
+          return
+        } catch {
+          /* fall through to the manual channels */
+        }
+      }
       setStatus('choose')
     }
   }

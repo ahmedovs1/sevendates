@@ -1,17 +1,9 @@
 import nodemailer from 'nodemailer'
 
-import { existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
+import { loadEnv } from './lib/env.js'
 
-/*
- * Load .env when the process was started plainly as `node <file>.js`.
- * systemd passes the variables itself via EnvironmentFile, and `npm start`
- * uses --env-file, so in both of those cases this is a no-op.
- */
-const envFile = fileURLToPath(new URL('.env', import.meta.url))
-if (!process.env.SMTP_HOST && existsSync(envFile)) {
-  process.loadEnvFile(envFile)
-}
+loadEnv(fileURLToPath(new URL('.env', import.meta.url)))
 
 /*
  * Connects and authenticates against the SMTP server without sending anything.

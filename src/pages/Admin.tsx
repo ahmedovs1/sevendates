@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react
 import { dictionaries, LANGS, type LangCode } from '../i18n'
 import { collectFields, readPath, type Overrides } from '../content/overrides'
 import { useContent } from '../content/ContentProvider'
-import type { Office } from '../data/site'
+import { apiUrl, type Office } from '../data/site'
 import type { Drink, EventItem } from '../content/types'
 
 /*
@@ -75,7 +75,7 @@ function Login({ onDone }: { onDone: () => void }) {
     setBusy(true)
     setError('')
     try {
-      await api('/api/admin/login', {
+      await api(apiUrl('admin/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
@@ -582,7 +582,7 @@ function ListsEditor({
         reader.onerror = () => reject(reader.error)
         reader.readAsDataURL(file)
       })
-      const { url } = await api('/api/admin/upload', {
+      const { url } = await api(apiUrl('admin/upload'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ dataUrl, name: file.name }),
@@ -689,7 +689,7 @@ function AccessEditor({ me }: { me: string | null }) {
   const [note, setNote] = useState('')
 
   const reload = useCallback(() => {
-    api('/api/admin/users').then((r) => setUsers(r.users)).catch(() => {})
+    api(apiUrl('admin/users')).then((r) => setUsers(r.users)).catch(() => {})
   }, [])
   useEffect(reload, [reload])
 
@@ -729,7 +729,7 @@ function AccessEditor({ me }: { me: string | null }) {
                   onClick={() =>
                     confirm(`Удалить доступ для ${u.username}?`) &&
                     run(
-                      () => api(`/api/admin/users/${encodeURIComponent(u.username)}`, { method: 'DELETE' }),
+                      () => api(apiUrl(`admin/users/${encodeURIComponent(u.username)}`), { method: 'DELETE' }),
                       'Доступ удалён',
                     )
                   }
@@ -767,7 +767,7 @@ function AccessEditor({ me }: { me: string | null }) {
           onClick={() =>
             run(
               () =>
-                api('/api/admin/users', {
+                api(apiUrl('admin/users'), {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify(form),
@@ -808,7 +808,7 @@ function AccessEditor({ me }: { me: string | null }) {
           onClick={() =>
             run(
               () =>
-                api('/api/admin/password', {
+                api(apiUrl('admin/password'), {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify(pw),
@@ -836,7 +836,7 @@ export default function Admin() {
   const [status, setStatus] = useState('')
 
   useEffect(() => {
-    api('/api/admin/session')
+    api(apiUrl('admin/session'))
       .then((r) => {
         setAuthed(Boolean(r.authenticated))
         setMe(r.username ?? null)
@@ -849,7 +849,7 @@ export default function Admin() {
   }, [authed, loaded, overrides, draft])
 
   useEffect(() => {
-    if (authed) api('/api/admin/defaults').then((r) => setDefaults(r.seo)).catch(() => {})
+    if (authed) api(apiUrl('admin/defaults')).then((r) => setDefaults(r.seo)).catch(() => {})
   }, [authed])
 
   const save = useCallback(async () => {
@@ -858,7 +858,7 @@ export default function Admin() {
     if (!draft || section === 'access') return
     setStatus('Сохраняем…')
     try {
-      await api(`/api/admin/content/${section}`, {
+      await api(apiUrl(`admin/content/${section}`), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(draft[section]),
@@ -874,7 +874,7 @@ export default function Admin() {
     return (
       <Login
         onDone={() =>
-          api('/api/admin/session').then((r) => {
+          api(apiUrl('admin/session')).then((r) => {
             setMe(r.username ?? null)
             setAuthed(true)
           })
@@ -913,7 +913,7 @@ export default function Admin() {
               type="button"
               className="text-[13px] text-muted hover:text-accent"
               onClick={() =>
-                api('/api/admin/logout', { method: 'POST' }).then(() => setAuthed(false))
+                api(apiUrl('admin/logout'), { method: 'POST' }).then(() => setAuthed(false))
               }
             >
               Выйти
