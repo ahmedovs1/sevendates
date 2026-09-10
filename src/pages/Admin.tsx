@@ -14,7 +14,7 @@ import type { Drink, EventItem } from '../content/types'
  * edit the site into a blank page.
  */
 
-type Section = 'seo' | 'contacts' | 'texts' | 'lists' | 'access'
+type Section = 'seo' | 'contacts' | 'texts' | 'lists' | 'access' | 'help'
 type SeoDefaults = Record<string, Record<string, { title: string; description: string }>>
 
 const SECTION_LABEL: Record<Section, string> = {
@@ -23,6 +23,7 @@ const SECTION_LABEL: Record<Section, string> = {
   texts: 'Тексты',
   lists: 'Списки',
   access: 'Доступы',
+  help: 'Справка',
 }
 
 const ROUTES = [
@@ -824,6 +825,106 @@ function AccessEditor({ me }: { me: string | null }) {
   )
 }
 
+
+/* -------------------------------------------------------------------- help */
+
+function Block({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <section className="rounded-[14px] border border-line bg-white p-6">
+      <h3 className="mb-3 text-[19px] text-brand">{title}</h3>
+      <div className="grid gap-3 text-[15px] leading-relaxed text-ink">{children}</div>
+    </section>
+  )
+}
+
+/** Plain-language answers to what editors actually ask. */
+function Help() {
+  return (
+    <div className="grid max-w-[760px] gap-5">
+      <Block title="Что делает каждый раздел">
+        <p>
+          <b>Тексты</b> — всё, что читает посетитель на страницах: заголовки, описания, пункты
+          списков. Меняете здесь — меняется на сайте.
+        </p>
+        <p>
+          <b>SEO</b> — то, чего на странице <i>не видно</i>: название вкладки браузера, описание в
+          Яндексе и Google, картинка в превью при отправке ссылки в Telegram или WhatsApp.
+        </p>
+        <p className="rounded-lg bg-cream p-4">
+          Частая путаница: поменяли текст в разделе SEO и не видите изменений на странице. Так и
+          должно быть — посмотрите на вкладку браузера. Чтобы поменять надпись на самой странице,
+          идите в «Тексты».
+        </p>
+        <p>
+          <b>Контакты</b> — телефоны, адреса, почта офисов и ссылки на соцсети. Меняются сразу и на
+          странице «Контакты», и в подвале сайта.
+        </p>
+        <p>
+          <b>Списки</b> — выставки, коктейли, моктейли и награды: карточки с картинками.
+        </p>
+        <p>
+          <b>Доступы</b> — кто может входить в эту панель.
+        </p>
+      </Block>
+
+      <Block title="Где хранится то, что вы меняете">
+        <p>
+          Сайт устроен так: у каждого текста есть <b>исходное значение</b>, зашитое в сайт при
+          сборке. Когда вы что-то правите, сохраняется <b>только ваша правка</b> — как заметка
+          поверх исходного текста.
+        </p>
+        <p>
+          Отсюда важное следствие: <b>очистить поле — значит вернуть исходный текст</b>, а не
+          сделать его пустым. Пустых заголовков и пропавших блоков на сайте не появится, что бы вы
+          ни стёрли.
+        </p>
+        <p>
+          У списков для этого есть отдельная кнопка «Вернуть исходный список» — она убирает все
+          ваши добавления и удаления разом.
+        </p>
+      </Block>
+
+      <Block title="Пароли">
+        <p>
+          Пароли в панели <b>не хранятся</b> — ни ваш, ни чужие. Хранится только результат
+          необратимого преобразования, из которого пароль обратно не получить.
+        </p>
+        <p>
+          Поэтому посмотреть чужой пароль нельзя даже администратору. Если человек забыл свой —
+          удалите его доступ и создайте заново с новым паролем.
+        </p>
+        <p>
+          Свой пароль меняется в разделе «Доступы», внизу. Нужно знать текущий — это защита на
+          случай, если вы отошли от компьютера с открытой панелью.
+        </p>
+      </Block>
+
+      <Block title="Когда изменения появятся на сайте">
+        <p>
+          Сразу после нажатия «Сохранить». Но если сайт уже открыт в соседней вкладке — обновите её
+          (Cmd+R или Ctrl+R), иначе увидите старую версию из памяти браузера.
+        </p>
+        <p>
+          Одно исключение: <b>превью ссылок в мессенджерах</b>. Telegram и WhatsApp запоминают
+          карточку надолго, и после правки SEO старое превью может показываться ещё сутки. Это на
+          их стороне, с сайтом всё в порядке.
+        </p>
+      </Block>
+
+      <Block title="Если что-то пошло не так">
+        <p>
+          Испортить сайт правкой в этой панели нельзя. Любое поле возвращается к исходному
+          значению, если его очистить и сохранить.
+        </p>
+        <p>
+          Панель не даёт удалить собственную учётную запись и последнюю оставшуюся — иначе в неё
+          было бы не войти.
+        </p>
+      </Block>
+    </div>
+  )
+}
+
 /* ------------------------------------------------------------------- shell */
 
 export default function Admin() {
@@ -855,7 +956,7 @@ export default function Admin() {
   const save = useCallback(async () => {
     // `access` manages accounts through its own endpoints — there is no draft
     // for it, and nothing to PUT into the content store.
-    if (!draft || section === 'access') return
+    if (!draft || section === 'access' || section === 'help') return
     setStatus('Сохраняем…')
     try {
       await api(apiUrl(`admin/content/${section}`), {
@@ -903,7 +1004,7 @@ export default function Admin() {
             ))}
           </nav>
           <div className="ml-auto flex items-center gap-3">
-            {section !== 'access' && (
+            {section !== 'access' && section !== 'help' && (
               <button type="button" onClick={save} className="btn-primary px-5 py-2 text-[14px]">
                 Сохранить «{SECTION_LABEL[section]}»
               </button>
@@ -942,6 +1043,7 @@ export default function Admin() {
           <TextsEditor value={draft.texts} onChange={(texts) => setDraft({ ...draft, texts })} />
         )}
         {section === 'access' && <AccessEditor me={me} />}
+        {section === 'help' && <Help />}
         {section === 'lists' && (
           <ListsEditor
             value={draft.lists}

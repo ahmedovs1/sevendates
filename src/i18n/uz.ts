@@ -28,6 +28,8 @@ const dict: Dict = {
     submit: "So'rov yuborish",
     sending: 'Yuborilmoqda…',
     success: "Rahmat! Tez orada siz bilan bog'lanamiz.",
+    successHint: "Tezroq javob kerakmi? Bizga WhatsApp orqali yozing.",
+    openWhatsapp: 'WhatsApp orqali yozish',
     chooseChannel: "So'rovni qanday yuborishni tanlang:",
     sendMail: 'E-mail orqali yuborish',
     sendWhatsapp: 'WhatsApp orqali yuborish',

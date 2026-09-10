@@ -28,6 +28,8 @@ const dict: Dict = {
     submit: 'Send request',
     sending: 'Sending…',
     success: 'Thank you! We will contact you shortly.',
+    successHint: 'Want a faster reply? Message us on WhatsApp.',
+    openWhatsapp: 'Message us on WhatsApp',
     chooseChannel: 'Choose how to send your request:',
     sendMail: 'Send by e-mail',
     sendWhatsapp: 'Send on WhatsApp',

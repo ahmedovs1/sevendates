@@ -154,11 +154,11 @@ export default function Home() {
               {t.about.cta}
             </Link>
           </div>
-          <img
-            src={images.about}
-            alt=""
-            className="order-first rounded-[18px] shadow-brand lg:order-none"
-          />
+          <div className="order-first grid gap-5 lg:order-none">
+            {images.about.map((src) => (
+              <img key={src} src={src} alt="" className="rounded-[18px] " />
+            ))}
+          </div>
         </Reveal>
       </section>
 

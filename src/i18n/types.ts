@@ -30,6 +30,8 @@ export interface Dict {
     submit: string
     sending: string
     success: string
+    successHint: string
+    openWhatsapp: string
     chooseChannel: string
     sendMail: string
     sendWhatsapp: string

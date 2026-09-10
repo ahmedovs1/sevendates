@@ -102,7 +102,8 @@ export const images = {
   heroBgMobile: '/images/mobileBGimg.webp',
   cross: '/images/xicon.png',
   plus: '/images/plus.png',
-  about: '/images/flags.webp',
+  /** the "about" block stacks both pairs: Uzbekistan/Italy, then Kazakhstan/Russia */
+  about: ['/images/flags.webp', '/images/flags1.png'],
   video: '/media/viid.mp4',
   videoPoster: '/images/pr.webp',
   youtubeId: 'YAxfArXFKOY',
